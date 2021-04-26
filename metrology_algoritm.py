@@ -6,10 +6,10 @@ from data_set_processing import DataSetProcessing
 print("Алгоритм обработки многократных равноточных измерений\n")
 print("Дано:")
 num_data_sets = int(input("Количество измерений: ")) # к примеру 10
-data_set = [] # к примеру: [10, 10.1, 10.2, 9.8, 9.9, 10, 9.9, 10.1, 10.8, 10]
-for index_data in range(num_data_sets):
-    data = input(f"{index_data+1} измерение: ")
-    data_set.append(float(data))
+data_set = [10, 10.1, 10.2, 9.8, 9.9, 10, 9.9, 10.1, 10.8, 10]
+# for index_data in range(num_data_sets):
+#     data = input(f"{index_data+1} измерение: ")
+#     data_set.append(float(data))
 alpha = float(input("Доверительная вероятность: "))
 first_experiences = DataSetProcessing(num_data_sets, data_set, alpha)
 
@@ -20,7 +20,7 @@ while EXIST_OUTLIERS:
     print(f'Оценка измеряемой величины (СА):\nx = (1/n)*sum(xi) = {mean_data_set}')
     
     std_data_set = first_experiences.std()
-    print(f'Среднеквадратичное отклонение (СКО):\nS = sqrt(sum((xi - x)^2)/(n-1)) = {mean_data_set}')
+    print(f'Среднеквадратичное отклонение (СКО):\nS = sqrt(sum((xi - x)^2)/(n-1)) = {std_data_set}')
 
     print("Проверка измерений на удовлетворение теоретическому значению критерия Граббса:")
     G1_max = first_experiences.g_right_tailed_test()

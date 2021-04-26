@@ -30,7 +30,7 @@ class DataSetProcessing():
     
     def std(self):
         '''Среднее квадратическое отклонение каждого измерения'''
-        return np.std(self.data_set)
+        return np.std(self.data_set, ddof=1)
 
     def g_left_tailed_test(self):
         '''Критерий Граббса для отклонения в минимальную сторону'''
