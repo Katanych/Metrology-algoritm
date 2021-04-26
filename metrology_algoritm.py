@@ -2,6 +2,7 @@
 import numpy as np
 from data_set_processing import DataSetProcessing
 
+
 print("Алгоритм обработки многократных равноточных измерений\n")
 print("Дано:")
 num_data_sets = int(input("Количество измерений: ")) # к примеру 10
