@@ -5,11 +5,11 @@ from data_set_processing import DataSetProcessing
 
 print("Алгоритм обработки многократных равноточных измерений\n")
 print("Дано:")
-num_data_sets = int(input("Количество измерений: ")) # к примеру 10
-data_set = [10, 10.1, 10.2, 9.8, 9.9, 10, 9.9, 10.1, 10.8, 10]
-# for index_data in range(num_data_sets):
-#     data = input(f"{index_data+1} измерение: ")
-#     data_set.append(float(data))
+num_data_sets = int(input("Количество измерений: ")) # к примеру 11
+data_set = [] # к примеру [10., 10.1, 10.2, 9.9, 9.8, 9.9, 10., 10.1, 9., 10., 10.]
+for index_data in range(num_data_sets):
+    data = input(f"{index_data+1} измерение: ")
+    data_set.append(float(data))
 alpha = float(input("Доверительная вероятность: "))
 first_experiences = DataSetProcessing(num_data_sets, data_set, alpha)
 
@@ -26,7 +26,7 @@ while EXIST_OUTLIERS:
     G1_max = first_experiences.g_right_tailed_test()
     print(f"Отклонение в максимальную сторону по критерию Граббса:\nG1 = abs(x_max - x) / S = {G1_max}")
     G2_min = first_experiences.g_left_tailed_test()
-    print(f"Отклонение в минимальную сторону по критерию Граббса:\nG2 = abs(x_min - x) /  = {G2_min}")
+    print(f"Отклонение в минимальную сторону по критерию Граббса:\nG2 = abs(x_min - x) / S  = {G2_min}")
     Gt = first_experiences.g_critical_value()
     print(f"Теоретическое значение Gt = {Gt}")
 
@@ -51,7 +51,7 @@ eps = first_experiences.confidence_bounds()
 print("Границы случайной погрешности:")
 print(f"eps = ts * S / sqrt(n) = {eps}")
 
-print(f"\nОтвет: Rизм = ({first_experiences.mean()}+-{eps})Ом; Pд = {first_experiences.alpha}; n = {first_experiences.num_data_sets}.")
+print(f"\nОтвет: изм = ({first_experiences.mean()}+-{eps}) eд.изм.; Pд = {first_experiences.alpha}; n = {first_experiences.num_data_sets}.")
 print("Погрешность округлите самостоятельно согласно правилам округления погрешности!")
 print("Если первая значащая цифра 3 и меньше, округлить до двух значащих цифр!")
 print("Если первая значащая цифра 4 и больше, округлить до одной значащей цифры!")

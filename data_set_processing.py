@@ -51,7 +51,7 @@ class DataSetProcessing():
     def t_student_test_value(self):
         '''Получение значения коэффициента стьюдента'''
         pd = 1 - self.alpha
-        return t.ppf(1-(pd/2), self.num_data_sets)
+        return t.ppf(1-(pd/2), self.num_data_sets-1)
     
     def confidence_bounds(self):
         '''Определение доверительных границ случайной погрешности'''
